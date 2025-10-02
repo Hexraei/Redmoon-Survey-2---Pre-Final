@@ -1,15 +1,14 @@
-
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { Stage } from './types';
-import type { RegistrationData, SurveyAnswers } from './types';
-import Landing from './components/Landing';
-import TshirtSelection from './components/TshirtSelection';
-import PreferencesIntro from './components/PreferencesIntro';
-import Questions from './components/Questions';
-import RegistrationIntro from './components/RegistrationIntro';
-import Registration from './components/Registration';
-import Completed from './components/Completed';
-import Loading from './components/Loading';
+import { Stage } from './types.ts';
+import type { RegistrationData, SurveyAnswers } from './types.ts';
+import Landing from './components/Landing.tsx';
+import TshirtSelection from './components/TshirtSelection.tsx';
+import PreferencesIntro from './components/PreferencesIntro.tsx';
+import Questions from './components/Questions.tsx';
+import RegistrationIntro from './components/RegistrationIntro.tsx';
+import Registration from './components/Registration.tsx';
+import Completed from './components/Completed.tsx';
+import Loading from './components/Loading.tsx';
 import { 
     trackError,
     logSurveyStart,
@@ -18,7 +17,7 @@ import {
     submitQuestionAnswers,
     logRegistrationIntroClick,
     submitRegistrationData,
-} from './services/api';
+} from './services/api.ts';
 
 const App: React.FC = () => {
     const [stage, setStage] = useState<Stage>(Stage.Landing);

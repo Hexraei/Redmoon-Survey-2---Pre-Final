@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface PreferencesIntroProps {
@@ -9,7 +8,7 @@ const PreferencesIntro: React.FC<PreferencesIntroProps> = ({ onNext }) => {
     return (
         <div className="flex flex-col justify-start min-h-screen p-8 text-left bg-white relative">
             <div className="mb-12">
-                <img src="./images/logo/redmoon_logo.png" 
+                <img src="/images/logo/redmoon_logo.png" 
                      alt="REDMOON" 
                      className="w-48 h-24 md:w-64 md:h-32 object-contain" />
             </div>
