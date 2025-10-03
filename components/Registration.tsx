@@ -30,7 +30,7 @@ const Registration: React.FC<RegistrationProps> = ({ registrationData, setRegist
         <div className="container mx-auto px-4 sm:px-8 py-8 bg-white min-h-screen">
             <div className="mb-4 text-center">
                 <div className="mb-0">
-                    <img src="/images/logo/redmoon_logo.png" 
+                    <img src="./images/logo/redmoon_logo.png" 
                          alt="REDMOON" 
                          className="w-48 h-24 md:w-64 md:h-32 object-contain mx-auto" />
                 </div>
