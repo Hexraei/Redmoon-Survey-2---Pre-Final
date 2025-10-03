@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,28 +25,37 @@
         border-radius: 0 !important;
       }
     </style>
-<!-- 1. Add Babel for in-browser TSX transformation -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<!-- 
-  The es-module-shims script is critical and must be loaded synchronously (no async) 
-  to prevent race conditions with the main application script. 
--->
-<script src="https://ga.jspm.io/npm:es-module-shims@1.10.0/dist/es-module-shims.js" crossorigin="anonymous"></script>
+
+    <!-- SCRIPT SETUP FOR IN-BROWSER TSX COMPILATION -->
+
+    <!-- 1. Polyfill for module features. Must load first and not be async. -->
+    <script src="https://unpkg.com/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
+
+    <!-- 2. Babel for transformation. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- 3. React and ReactDOM (UMD globals). MUST load before your app code. -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
 <script type="importmap">
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client"
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
-    <!-- 2. Update script tag to be processed by Babel, adding presets -->
+    
+    <!-- 4. Your application entry point. 
+         - type="text/babel" tells Babel to process this.
+         - data-presets="react,typescript" tells Babel HOW to process TSX. THIS IS THE KEY FIX.
+         - data-type="module" tells Babel to follow all 'import' statements.
+    -->
     <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
 </body>
 </html>
