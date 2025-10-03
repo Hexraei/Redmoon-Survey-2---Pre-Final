@@ -26,7 +26,11 @@
     </style>
 <!-- 1. Add Babel for in-browser TSX transformation -->
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script async src="https://ga.jspm.io/npm:es-module-shims@1.10.0/dist/es-module-shims.js" crossorigin="anonymous"></script>
+<!-- 
+  The es-module-shims script is critical and must be loaded synchronously (no async) 
+  to prevent race conditions with the main application script. 
+-->
+<script src="https://ga.jspm.io/npm:es-module-shims@1.10.0/dist/es-module-shims.js" crossorigin="anonymous"></script>
 <script type="importmap">
 {
   "imports": {
@@ -38,12 +42,10 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div id="root"></div>
     <!-- 2. Update script tag to be processed by Babel, adding presets -->
     <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
